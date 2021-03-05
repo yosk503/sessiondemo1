@@ -1,0 +1,11 @@
+server:
+  port: 9999
+spring:
+  redis:
+    host: 192.168.188.129
+    port: 6379
+  session:
+    store-type: redis
+    timeout: 3600 #session过期时间
+  thymeleaf:
+    cache: false #规避新建标签时把以前的内容显示出来

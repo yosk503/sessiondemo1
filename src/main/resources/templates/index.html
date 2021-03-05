@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+<span th:text="${user.id}"></span><br>
+<span th:text="${user.name}"></span><br>
+<span th:text="${user.age}"></span><br>
+<img th:src="${pic.pic1}" alt="">
+<img th:src="${pic.pic2}" alt="">
+<table width="200" style="text-align: center;">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>index</th>
+    </tr>
+    <tr th:each="user,iterStat : ${list}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${iterStat.index}">index</td>
+    </tr>
+</table>
+<p>[[${message}]]</p>
+<span th:text="'hhh'+${message}+'xixi'"></span><br>
+<span th:text="|hhhw${message}wxixi|"></span>
+<p th:if="${message}=='hello,sk'">siki</p>
+<p th:unless="${message}=='hello,sk'">yada</p>
+-------------
+<div th:insert="~{foot::my}">
+
+</div>
+==========<br>
+<div th:replace="~{foot::my}"></div>
+=========<br>
+<div th:include="~{foot::my}"></div>
+<br>
+
+<span th:if="${#strings.isEmpty(message)}">ts</span>
+<span th:text="${#strings.substring(message,0,4)}"></span><br>
+
+<span th:text="${#strings.abbreviate(message,15)}"></span>
+=====<br>
+时间：<span th:text="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}"></span>
+====<br>
+价格：<span th:text="|$${#numbers.formatDecimal(price,1,2)}|"></span>
+</body>
+</html>;
